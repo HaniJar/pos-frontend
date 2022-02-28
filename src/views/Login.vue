@@ -1,28 +1,18 @@
- <template>
-    <div class="form-body">
+<template>
+  <div class="form-body">
     <div class="row">
       <div class="form-holder">
         <div class="form-content">
           <div class="form-items">
-            <h3> Login in now</h3>
+            <h3>Login in now</h3>
             <p>Fill in the data below.</p>
-            <form  @submit.prevent="register" class="requires-validation" novalidate>
-              <div class="col-md-12">
-                <input
-                  class="form-control"
-                  type="text"
-                  v-model="name"
-                  placeholder="Full Name"
-                  required
-                />
-              </div>
-
+            <form @submit.prevent="login" class="requires-validation">
               <div class="col-md-12">
                 <input
                   class="form-control"
                   type="email"
                   v-model="email"
-                  placeholder="E-mail Address"
+                  placeholder="Email"
                   required
                 />
               </div>
@@ -42,10 +32,11 @@
                   Login
                 </button>
               </div>
-               <p>
-      If not a member?
-      <router-link :to="{ name: 'Register' }">Sign up</router-link>
-    </p>
+              <span v-if="error"></span>
+              <p>
+                If not a member?
+                <router-link :to="{ name: 'Register' }">Sign up</router-link>
+              </p>
             </form>
           </div>
         </div>
@@ -60,6 +51,7 @@ export default {
       name: "",
       email: "",
       password: "",
+      error: false,
     };
   },
   methods: {
@@ -70,20 +62,12 @@ export default {
           name: this.name,
           email: this.email,
           password: this.password,
+          error: this.error,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
-      })
-        .then((response) => response.json())
-        .then((json) => {
-          localStorage.setItem("jwt", json.jwt);
-          alert("User logged in");
-          this.$router.push({ name: "Products" });
-        })
-        .catch((err) => {
-          alert(err);
-        });
+      });
     },
   },
 };
@@ -100,7 +84,7 @@ body {
 html,
 body {
   height: 100%;
-  /* background-color: #152733; */
+  background-color: #152733;
   overflow: hidden;
 }
 
@@ -113,7 +97,6 @@ body {
   text-align: center;
   min-height: 100vh;
 }
-
 
 .form-holder .form-content {
   position: relative;
