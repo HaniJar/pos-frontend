@@ -25,6 +25,7 @@
             >
             <router-link to="/Register" class="nav-link">Register</router-link>
             <router-link to="/Products" class="nav-link">Products</router-link>
+            
           </div>
         </div>
       </nav>
