@@ -28,11 +28,14 @@
               </div>
 
               <div class="form-button mt-3">
+                <router-link :to="{name: 'Products'}">
+
                 <button id="submit" type="submit" class="btn btn-primary">
                   Login
                 </button>
+                </router-link>
               </div>
-              <span v-if="error"></span>
+              <!-- <span v-if="error"></span> -->
               <p>
                 If not a member?
                 <router-link :to="{ name: 'Register' }">Sign up</router-link>
@@ -54,22 +57,7 @@ export default {
       error: false,
     };
   },
-  methods: {
-    login() {
-      fetch("", {
-        method: "PATCH",
-        body: JSON.stringify({
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          error: this.error,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
-    },
-  },
+ 
 };
 </script>
 <style>
@@ -85,7 +73,7 @@ html,
 body {
   height: 100%;
   background-color: #152733;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* @media only screen and (max-width: 200px) { */

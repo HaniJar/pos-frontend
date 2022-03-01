@@ -38,9 +38,11 @@
               </div>
 
               <div class="form-button mt-3">
+                <router-link :to="{name: 'Login'}">
                 <button id="submit" type="submit" class="btn btn-primary">
                   Register
                 </button>
+                </router-link>
               </div>
                <p>
       Already a member?
@@ -82,7 +84,7 @@ html,
 body {
   height: 100%;
   /* background-color: #152733; */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* @media only screen and (max-width: 200px) { */
