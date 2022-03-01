@@ -1,7 +1,7 @@
 <template id="app">
   <section>
     <div id="nav">
-      <nav class="container navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="container navbar navbar-expand-lg p-3 navbar-light bg-light">
         <a class="navbar-brand" href="#"
           ><font-awesome-icon icon="fa-duotone fa-film"
         /></a>
@@ -18,7 +18,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="navbar-nav mr-auto">
+          <div class="navbar-nav mr-auto float-left">
             <router-link to="/" class="nav-item nav-link">Home</router-link>
             <router-link to="/Login" class="nav-item nav-link"
               >Login</router-link

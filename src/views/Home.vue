@@ -10,7 +10,7 @@
                       <router-link :to="{name: 'Login'}">
 
  <button id="submit" type="submit" class="btn btn-success">
-                  Get Started
+                  Watch Now
                 </button>
                 </router-link>   
                  </p>
@@ -35,14 +35,14 @@ button{
     color: #42b983;
 }
 .space{
-  padding-top: 6%;
+  padding-top: 10%;
 }
 .pt-5{
   padding: 20%;
 }
 .background {
     background:linear-gradient(0deg, rgba(44, 62, 80, 0.6), rgba(44, 62, 80, 0.6)), url(https://assets.nflxext.com/ffe/siteui/vlv3/ed0b5df9-ba9d-4534-bd09-57993daeda56/674bf691-e2b5-4490-aef5-6352533aab45/ZA-en-20220214-popsignuptwoweeks-perspective_alpha_website_small.jpg);
-height: 636px;
+height: 800px;
 width: 100%;
   
 background-repeat: no-repeat;

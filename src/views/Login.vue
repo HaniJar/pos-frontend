@@ -84,6 +84,7 @@ body {
   align-items: center;
   text-align: center;
   min-height: 100vh;
+  padding-bottom: 20%;
 }
 
 .form-holder .form-content {
