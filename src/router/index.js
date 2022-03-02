@@ -39,5 +39,12 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/Login', '/Register', 'Home'];
+  const authrequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('user');
 
+  if(to.path == '/Products' || to.path == '/Cart' && !loggedIn) next({name: 'Register'})
+  else next()
+});
 export default router

@@ -19,6 +19,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="navbar-brand  d-flex">
+            
             <router-link to="/" class="nav-item nav-link">Home</router-link>
             <router-link to="/Login" class="nav-item nav-link"
               >Login</router-link

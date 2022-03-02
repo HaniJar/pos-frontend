@@ -1,220 +1,158 @@
 <template>
-<section>
-  <div class="form-body">
-    <div class="row">
-      <div class="form-holder">
-        <div class="form-content">
-          <div class="form-items">
-            <h3>Login in now</h3>
-            <p>Fill in the data below.</p>
-            <form @submit.prevent="login" class="requires-validation">
-              <div class="col-md-12">
-                <input
-                  class="form-control"
-                  type="email"
-                  v-model="email"
-                  placeholder="Email"
-                  required
-                />
-              </div>
+  <section>
+    <div class="container">
+      <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-6">
+          <div class="card1 px-5 py-5">
+            <form  @submit.prevent="login">
+            <h3 class="mt-3">Login <br /></h3>
 
-              <div class="col-md-12">
-                <input
-                  class="form-control"
-                  type="password"
-                  v-model="password"
-                  placeholder="Password"
-                  required
-                />
-              </div>
+            <div class="form-input">
+              <i class="fa fa-envelope"></i>
+              <input
+                type="text"
+                class="form-control"
+                v-model="email"
+                placeholder="Email address"
+              />
+            </div>
 
-              <div class="form-button mt-3">
-                <router-link :to="{name: 'Products'}">
+            <div class="form-input">
+              <i class="fa fa-lock"></i>
+              <input type="text"
+               class="form-control" 
+               v-model="password"
+               placeholder="password" />
+            </div>
 
-                <button id="submit" type="submit" class="btn btn-primary">
-                  Login
-                </button>
-                </router-link>
-              </div>
-              <!-- <span v-if="error"></span> -->
-              <p>
-                If not a member?
-                <router-link :to="{ name: 'Register' }">Sign up</router-link>
-              </p>
+            <button class="btn btn-primary mt-4 signup" type="submit">Sign up!</button>
+          
+            <div class="text-center mt-5">
+              <span>Already a member?</span>
+              <router-link :to="{ name: 'Login' }" class="text-decoration-none">
+                Login</router-link
+              >
+            </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
   </section>
 </template>
 <script>
 export default {
   data() {
     return {
-      name: "",
       email: "",
       password: "",
-      error: false,
     };
   },
- 
+  methods: {
+    login() {
+      fetch("https://movies-posbackend.herokuapp.com/user/signin", {
+        method: "POST",
+        body: JSON.stringify({
+          email: this.email,
+          password: this.password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json)
+          localStorage.setItem("jwt", json.jwt);
+          alert("User logged in");
+          this.$router.push({ name: "Products" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+  },
 };
 </script>
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+.container {
+  padding-bottom: 11%;
+  padding-top: 8%;
+}
 body {
-    background-color: #152733;
-
+  background-color: #152733;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-
+  font-weight: 300;
 }
 
-
-
-
-/* @media only screen and (max-width: 200px) { */
-.form-holder {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  /* min-height: 100vh; */
-  padding-bottom: 20%;
+.height {
+  height: 100vh;
 }
 
-.form-holder .form-content {
-  position: absolute;
-  text-align: center;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  align-items: center;
-  /* padding: 60px; */
-}
-
-.form-content .form-items {
-  border: 3px solid #fff;
-  /* padding: 40px; */
-  display: inline-block;
-  /* width: 100%; */
+.card1 {
+  border: 3px solid #fff !important;
+  padding-bottom: 500px;
+  background-color: #152733;
+  color: white;
   min-width: 540px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  text-align: left;
-  /* -webkit-transition: all 0.4s ease; */
-  /* transition: all 0.4s ease; */
+  height: 40% !important;
 }
 
-.form-content h3 {
-  color: #fff;
-  text-align: left;
-  font-size: 28px;
-  font-weight: 600;
-  /* margin-bottom: 5px; */
+.form-input {
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-.form-content h3.form-title {
-  margin-bottom: 30px;
+.form-input i {
+  position: absolute;
+  font-size: 18px;
+  top: 15px;
+  left: 10px;
 }
 
-.form-content p {
-  color: #fff;
-  text-align: left;
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 20px;
-  /* margin-bottom: 30px; */
-}
-
-.form-content label,
-.was-validated .form-check-input:invalid ~ .form-check-label,
-.was-validated .form-check-input:valid ~ .form-check-label {
-  color: #fff;
-}
-
-.form-content input[type="text"],
-.form-content input[type="password"],
-.form-content input[type="email"],
-.form-content select {
-  /* width: 100%; */
-  /* padding: 9px 20px; */
-  text-align: left;
-  border: 0;
-  outline: 0;
-  border-radius: 6px;
-  background-color: #fff;
+.form-control {
+  height: 50px;
+  background-color: #1c1e21;
+  text-indent: 24px;
   font-size: 15px;
-  font-weight: 300;
-  color: #8d8d8d;
-  /* -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  margin-top: 16px; */
 }
 
-.btn-primary {
-  background-color: #6c757d;
-  outline: none;
-  border: 0px;
+.form-control:focus {
+  background-color: #25272a;
   box-shadow: none;
+  color: #fff;
+  border-color: #4f63e7;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active {
-  background-color: #495056;
-  outline: none !important;
-  border: none !important;
-  box-shadow: none;
+.form-check-label {
+  margin-top: 2px;
+  font-size: 14px;
 }
 
-.form-content textarea {
-  position: static !important;
-  /* width: 100%;
-  padding: 8px 20px; */
-  border-radius: 6px;
-  text-align: left;
-  background-color: #fff;
-  border: 0;
-  font-size: 15px;
-  font-weight: 300;
-  color: #8d8d8d;
-  outline: none;
-  resize: none;
-  height: 120px;
-  -webkit-transition: none;
-  transition: none;
-  /* margin-bottom: 14px; */
+.signup {
+  height: 50px;
+  font-size: 14px;
 }
 
-.form-content textarea:hover,
-.form-content textarea:focus {
-  border: 0;
-  background-color: #ebeff8;
-  color: #8d8d8d;
-}
-/* 
-.mv-up {
-  margin-top: -9px !important;
-  margin-bottom: 8px !important;
-} */
-
-.invalid-feedback {
-  color: #ff606e;
+.social {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
-.valid-feedback {
-  color: #2acc80;
+.social:hover {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
 }
 </style>
