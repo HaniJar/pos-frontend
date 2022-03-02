@@ -1,4 +1,5 @@
 <template>
+<section>
   <div class="form-body">
     <div class="row">
       <div class="form-holder">
@@ -46,6 +47,7 @@
       </div>
     </div>
   </div>
+  </section>
 </template>
 <script>
 export default {
@@ -62,19 +64,18 @@ export default {
 </script>
 <style>
 body {
+    background-color: #152733;
+
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
-html,
-body {
-  height: 100%;
-  background-color: #152733;
-  /* overflow: hidden; */
-}
+
+
 
 /* @media only screen and (max-width: 200px) { */
 .form-holder {
@@ -83,11 +84,12 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  padding-bottom: 20%;
 }
 
 .form-holder .form-content {
-  position: relative;
+  position: absolute;
   text-align: center;
   display: -webkit-box;
   display: -moz-box;
@@ -98,21 +100,21 @@ body {
   justify-content: center;
   -webkit-align-items: center;
   align-items: center;
-  padding: 60px;
+  /* padding: 60px; */
 }
 
 .form-content .form-items {
   border: 3px solid #fff;
-  padding: 40px;
+  /* padding: 40px; */
   display: inline-block;
-  width: 100%;
+  /* width: 100%; */
   min-width: 540px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   text-align: left;
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  /* -webkit-transition: all 0.4s ease; */
+  /* transition: all 0.4s ease; */
 }
 
 .form-content h3 {
@@ -120,7 +122,7 @@ body {
   text-align: left;
   font-size: 28px;
   font-weight: 600;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 .form-content h3.form-title {
@@ -133,7 +135,7 @@ body {
   font-size: 17px;
   font-weight: 300;
   line-height: 20px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 .form-content label,
@@ -146,8 +148,8 @@ body {
 .form-content input[type="password"],
 .form-content input[type="email"],
 .form-content select {
-  width: 100%;
-  padding: 9px 20px;
+  /* width: 100%; */
+  /* padding: 9px 20px; */
   text-align: left;
   border: 0;
   outline: 0;
@@ -156,9 +158,9 @@ body {
   font-size: 15px;
   font-weight: 300;
   color: #8d8d8d;
-  -webkit-transition: all 0.3s ease;
+  /* -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  margin-top: 16px;
+  margin-top: 16px; */
 }
 
 .btn-primary {
@@ -179,8 +181,8 @@ body {
 
 .form-content textarea {
   position: static !important;
-  width: 100%;
-  padding: 8px 20px;
+  /* width: 100%;
+  padding: 8px 20px; */
   border-radius: 6px;
   text-align: left;
   background-color: #fff;
@@ -193,7 +195,7 @@ body {
   height: 120px;
   -webkit-transition: none;
   transition: none;
-  margin-bottom: 14px;
+  /* margin-bottom: 14px; */
 }
 
 .form-content textarea:hover,
@@ -202,11 +204,11 @@ body {
   background-color: #ebeff8;
   color: #8d8d8d;
 }
-
+/* 
 .mv-up {
   margin-top: -9px !important;
   margin-bottom: 8px !important;
-}
+} */
 
 .invalid-feedback {
   color: #ff606e;
