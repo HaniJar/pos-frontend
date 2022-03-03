@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
     <div class="card p-4">
-        <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button> <span class="name mt-3">Eleanor Pena</span> <span class="idd">@eleanorpena</span>
+        <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="https://i.postimg.cc/Vvt4c7j6/istockphoto-1127367070-612x612.jpg" height="100" width="100" /></button> <span class="name mt-3">Eleanor Pena</span> <span class="idd">@eleanorpena</span>
             <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">Oxc4c16a645_b21a</span> <span><i class="fa fa-copy"></i></span> </div>
             <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">1069 <span class="follow">Followers</span></span> </div>
             <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Edit Profile</button> </div>
@@ -14,12 +14,48 @@
 </template>
 
 <script>
-export default {
 
-}
+export default {
+  data() {
+    return {
+      fullname: "",
+      email: "",
+      phone_number: "",
+      password: "",
+    };
+  },
+  methods: {
+    register() {
+      console.log(this.password);
+      fetch("https://movies-posbackend.herokuapp.com/user/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          fullname: this.fullname,
+          email: this.email,
+          phone_number: this.phone_number,
+          password: this.password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          alert("User registered");
+          localStorage.setItem("jwt", json.jwt);
+          this.$router.push({ name: "Login" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+  },
+};
 </script>
 
-<style>
+
+<style scoped>
 * {
     margin: 0;
     padding: 0
