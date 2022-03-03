@@ -5,7 +5,7 @@ import Login from '../views/Login.vue'
 import Products from "../views/Products.vue";
 import Cart from "../components/Cart.vue";
 import ProductCard from "../components/ProductCard.vue"
-
+import Profile from "../views/Profile.vue";
 
 const routes = [
   {
@@ -37,6 +37,11 @@ const routes = [
     path: "/ProductCard",
     name: "ProductCard",
     component: ProductCard,
+  },
+  {
+    path: "/Profile",
+    name: "Profile",
+    component: Profile,
   }
 ];
 
