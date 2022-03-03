@@ -40,8 +40,8 @@
    
     <header>
       {{cart.length}} in cart
-      <button v-on:click="navigateTo('cart')">view cart</button>
-      <button v-on:click="navigateTo('movies')">view movies</button>
+      <button v-on:click="navigateTo('cart')" class="btn btn-outline-danger w-100">view cart</button>
+      <button v-on:click="navigateTo('movies')" class="btn btn-outline-danger w-100">view movies</button>
     </header>
 
 
