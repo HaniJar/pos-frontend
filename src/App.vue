@@ -1,7 +1,9 @@
 <template id="app">
   <section>
     <div id="nav">
-      <nav class="container-fluid fixed-top navbar navbar-expand-lg p-3 navbar-light bg-light">
+      <nav
+        class="container-fluid fixed-top navbar navbar-expand-md p-3 navbar-light bg-light"
+      >
         <a class="navbar-brand" href="#"
           ><font-awesome-icon icon="fa-duotone fa-film"
         /></a>
@@ -18,17 +20,15 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="navbar-brand  d-flex">
-            
+          <div class="navbar-brand d-flex">
             <router-link to="/" class="nav-item nav-link">Home</router-link>
             <router-link to="/Login" class="nav-item nav-link"
               >Login</router-link
             >
             <router-link to="/Register" class="nav-link">Register</router-link>
             <router-link to="/Products" class="nav-link">Products</router-link>
-                        <router-link to="/Cart" class="nav-link">Cart</router-link>
-
-            
+            <router-link to="/Cart" class="nav-link">Cart</router-link>
+            <router-link to="/Profile" class="nav-link">Profile</router-link>
           </div>
         </div>
       </nav>
@@ -56,7 +56,6 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #db443f;
 }
-
 </style>

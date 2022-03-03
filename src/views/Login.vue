@@ -8,12 +8,13 @@
             <h3 class="mt-3">Login <br /></h3>
 
             <div class="form-input">
-              <i class="fa fa-envelope"></i>
-              <input
+              <i class="fa fa-user"></i>
+            <input
                 type="text"
                 class="form-control"
-                v-model="email"
-                placeholder="Email address"
+                v-model="fullname"
+                placeholder="Username"
+                required
               />
             </div>
 
@@ -22,15 +23,15 @@
               <input type="text"
                class="form-control" 
                v-model="password"
-               placeholder="password" />
+               placeholder="Password" />
             </div>
 
-            <button class="btn btn-primary mt-4 signup" type="submit">Sign up!</button>
+            <button class="btn btn-danger mt-4 signup" type="submit">Sign in</button>
           
             <div class="text-center mt-5">
-              <span>Already a member?</span>
+              <span>Not a member?</span>
               <router-link :to="{ name: 'Login' }" class="text-decoration-none">
-                Login</router-link
+                Sign Up</router-link
               >
             </div>
             </form>
@@ -44,7 +45,7 @@
 export default {
   data() {
     return {
-      email: "",
+      fullname: "",
       password: "",
     };
   },
@@ -117,13 +118,13 @@ body {
 
 .form-control {
   height: 50px;
-  background-color: #1c1e21;
+  background-color: #7e8792;
   text-indent: 24px;
   font-size: 15px;
 }
 
 .form-control:focus {
-  background-color: #25272a;
+  background-color: #7e8792;
   box-shadow: none;
   color: #fff;
   border-color: #4f63e7;

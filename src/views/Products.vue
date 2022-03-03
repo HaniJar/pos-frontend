@@ -29,7 +29,9 @@
                   Cart
                 </button>
                 </router-link>
-              <button class="btn btn-outline-danger w-100">Buy Now</button>
+                <button >ADD TO CART</button>
+
+              <button v-on:click="addItemToCart(product)" class="btn btn-outline-danger w-100">Buy Now</button>
             </div>
           </div>
         </div>
@@ -43,6 +45,7 @@ export default {
   data() {
     return {
       movies: [],
+      cart: [],
     };
   },
   mounted() {
@@ -53,6 +56,14 @@ export default {
         console.log(data, this.movies);
       });
   },
+methods: {
+  addItemToCart(products) {
+      this.cart.push(products);
+      console.log(this.cart);
+    }
+    
+
+  }
 };
 </script>
 

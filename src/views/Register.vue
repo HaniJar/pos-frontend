@@ -11,7 +11,7 @@
                 type="text"
                 class="form-control"
                 v-model="fullname"
-                placeholder="User name"
+                placeholder="Fullname"
                 required
               />
             </div>
@@ -46,14 +46,14 @@
               />
             </div>
 
-            <button class="btn btn-primary mt-4 signup" type="submit">
-              Sign up!
+            <button class="btn btn-danger mt-4 signup" type="submit">
+              Sign up
             </button>
 
             <div class="text-center mt-5">
-              <span>Already a member?</span>
+              
               <router-link :to="{ name: 'Login' }" class="text-decoration-none">
-                Login</router-link
+              </router-link
               >
             </div>
           </form>
@@ -141,13 +141,13 @@ export default {
 
 .form-control {
   height: 50px;
-  background-color: #1c1e21;
+  background-color: #152733;
   text-indent: 24px;
   font-size: 15px;
 }
 
 .form-control:focus {
-  background-color: #25272a;
+  background-color: #152733;
   box-shadow: none;
   color: #fff;
   border-color: #4f63e7;
