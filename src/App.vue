@@ -27,7 +27,7 @@
             >
             <router-link to="/Register" class="nav-link">Register</router-link>
             <router-link to="/Products" class="nav-link">Products</router-link>
-            <router-link to="/Cart" class="nav-link">Cart</router-link>
+            
             <router-link to="/Profile" class="nav-link">Profile</router-link>
           </div>
         </div>
