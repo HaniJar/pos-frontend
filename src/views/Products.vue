@@ -1,49 +1,34 @@
 <template>
-  <div class="section-heading space">
-    <h1>Products</h1>
-  </div>
-  <div class="wrapper">
-    <div class="container">
-      <div class="row row-cols-1 row projects g-4 pt pad">
-        <div v-for="movie in movies" :key="movie" class="col-md-6">
-          <div class="card p-2">
-            <div class="p-info px-3 py-3">
-              <div>
-                <h5 class="mb-0">{{ movie.name }}</h5>
-              </div>
-              <div class="p-price d-flex flex-row">
-                <span>R</span>
-                <h1>{{ movie.price }}</h1>
-              </div>
-              <div class="heart"><i class="bx bx-heart"></i></div>
-            </div>
-            <div class="text-center p-image"><img :src="movie.img" /></div>
-            <div class="p-about">
-              <p>{{ movie.description }}</p>
-            </div>
-            <div class="buttons d-flex flex-row gap-3 px-3">
-              <!-- <button class="">View</button> -->
-              <router-link :to="{name: 'Cart'}">
+  <div>
+    <br>
+    <br>
+    <header>
+      {{cart.length}} in cart
+      <button v-on:click="navigateTo('cart')">view cart</button>
+      <button v-on:click="navigateTo('movies')">view movies</button>
+    </header>
 
-                <button id="submit" type="submit" class="btn btn-primary">
-                  Cart
-                </button>
-                </router-link>
-                <button >ADD TO CART</button>
 
-              <button v-on:click="addItemToCart(product)" class="btn btn-outline-danger w-100">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div v-if="page === 'cart'">
+   <Cart v-on:removeItem="removeItem" :cart="cart" />
     </div>
+
+    <div v-if="page === 'movies'">
+    <ProductCard v-on:addToCart="addToCart" />
+    </div>
+
   </div>
+ 
 </template>
 
 <script>
+
+import ProductCard from '../components/ProductCard.vue';
+import Cart from '../components/Cart.vue';
 export default {
   data() {
     return {
+      page: 'movies',
       movies: [],
       cart: [],
     };
@@ -56,15 +41,23 @@ export default {
         console.log(data, this.movies);
       });
   },
-methods: {
-  addItemToCart(products) {
-      this.cart.push(products);
-      console.log(this.cart);
-    }
+   components: {ProductCard, Cart},
+methods:{
+   removeItem(movie){
+    this.cart.splice(this.cart.indexOf(movie),1);
+  },
+  addToCart(movie){
+  this.cart.push(movie);
+  },
+  navigateTo(page){
+    this.page = page;
+  },
+
+}
     
 
-  }
-};
+  };
+
 </script>
 
 <style>

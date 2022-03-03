@@ -3,8 +3,8 @@ import Home from '../views/Home.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import Products from "../views/Products.vue";
-import Cart from "../views/Cart.vue";
-
+import Cart from "../components/Cart.vue";
+import ProductCard from "../components/ProductCard.vue"
 
 
 const routes = [
@@ -33,6 +33,11 @@ const routes = [
     name: "Cart",
     component: Cart,
   },
+  {
+    path: "/ProductCard",
+    name: "ProductCard",
+    component: ProductCard,
+  }
 ];
 
 const router = createRouter({
