@@ -1,7 +1,43 @@
 <template>
   <div>
-    <br>
-    <br>
+                         <div class="container d-flex justify-content-end">
+      <div class="d-flex w-25 ms-3">
+        <label for="" class="form-label">Sort by category</label>
+        <select
+          class="form-select"
+          name=""
+          id="sortCategory"
+          onchange="sortCategory()"
+        >
+          <option value="All">All</option>
+          <option value="Horror">Horror</option>
+          <option value="Action">Action</option>
+          <option value="K-Drama">K-Drama</option>
+           <option value="Anime">Anime</option>
+        </select>
+      </div>
+      <div class="d-flex w-25 ms-3">
+        <label for="" class="form-label">Sort name</label>
+        <select class="form-select" name="" id="sortName" onchange="sortName()">
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+      </div>
+      <div class="d-flex w-25 ms-3">
+        <label for="" class="form-label">Sort price</label>
+        <select
+          class="form-select"
+          name=""
+          id="sortPrice"
+          onchange="sortPrice()"
+        >
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+      </div>
+    </div>
+  </div>
+   
     <header>
       {{cart.length}} in cart
       <button v-on:click="navigateTo('cart')">view cart</button>
@@ -17,7 +53,7 @@
     <ProductCard v-on:addToCart="addToCart" />
     </div>
 
-  </div>
+
  
 </template>
 
@@ -52,9 +88,56 @@ methods:{
   navigateTo(page){
     this.page = page;
   },
+// SORT BY CATEGORY
+ sortCategory() {
+  let category = document.querySelector("#sortCategory").value;
 
+  if (category == "All") {
+    return readMovies(movie);
+  }
+
+  let foundMovie = movie.filter((movie) => {
+    return movie.category == category;
+  });
+
+  readProducts(foundMovie);
+  console.log(foundMovie);
+},
+
+// SORT BY NAME
+
+ sortName() {
+  let direction = document.querySelector("#sortName").value;
+
+  let sortedMovie = movie.sort((a, b) => {
+    if (a.name.toLowerCase() < b.name.toLowerCase()) {
+      return -1;
+    }
+    if (a.name.toLowerCase() > b.name.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  });
+  if (direction == "descending") sortedMovie.reverse();
+  console.log(sortedMovie);
+  readProducts(movie);
+},
+
+// SORT BY PRICE
+
+ sortPrice() {
+  let direction = document.querySelector("#sortPrice").value;
+
+  let sortedMovie = Movie.sort((a, b) => a.price - b.price);
+
+  console.log(sortedMovie);
+
+  if (direction == "descending") sortedMovie.reverse();
+  readProducts(sortedMovie);
+}
 }
     
+
 
   };
 
